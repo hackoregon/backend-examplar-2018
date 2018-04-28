@@ -167,3 +167,4 @@ Adi ([kiniadit](https://github.com/kiniadit)),
 Mike Lonergan ([mikethecanuck](https://github.com/mikethecanuck)),
 Alec Peters ([adpeters](https://github.com/adpeters)),
 Nathan Miller ([nam20485](https://github.com/nam20485)).
+Moss Drake ([mxmoss](https://github.com/mxmoss)).
