@@ -32,7 +32,7 @@
     api_development_1  | Quit the server with CONTROL-C.
     ```
 
-    You can now browse to <http://localhost:8000> to verify the server is live. You should see a Django default page.
+    You can now browse to <http://localhost:8000> to verify the server is live. You should see a Django default page. You should also be able to connect to the database as user `postgres` with the password from `.env`, host `localhost` and port 5439.
 2. After verifying that the server is there, press `CTRL-C`. This will shut down the database and API services.
 3. The script will copy the generated code for your project to the repository.
 4. Check your remote - `git remote -v`. Make sure you'll be pushing to the new repository, not the template!
