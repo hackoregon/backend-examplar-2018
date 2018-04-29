@@ -15,10 +15,9 @@
     * Change PROJECT_NAME
     * Change DEVELOPMENT_POSTGRES_NAME
     * Change DEVELOPMENT_DATABASE_OWNER
-    * Change STAGING_POSTGRES_NAME
     * Change the passwords and secret keys
 
-## Running the creation
+## Running the creation script
 1. Type `bin/onestep-create.sh`. This will
     * remove the sample project files,
     * build the database and API Docker images,
@@ -33,8 +32,8 @@
     api_development_1  | Quit the server with CONTROL-C.
     ```
 
-    You can now browse to <http://localhost:8000> to verify the server is live.
-2. After verifying that the server is there, press `CTRL-C`. This will shut down the services.
+    You can now browse to <http://localhost:8000> to verify the server is live. You should see a Django default page.
+2. After verifying that the server is there, press `CTRL-C`. This will shut down the database and API services.
 3. The script will copy the generated code for your project to the repository.
 4. Check your remote - `git remote -v`. Make sure you'll be pushing to the new repository, not the template!
 5. `git add .; git commit; git push`.
