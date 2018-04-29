@@ -15,11 +15,6 @@ if [ -d ./api ]; then
     rm -rf api
 fi
 
-if [ -f ./Backups/dead_songs.sql ]; then
-    echo "removing sanmple db backup"
-    rm ./Backups/dead_songs.sql
-fi
-
 if [ "$(docker ps -a -q -f ancestor=db_development --format=\"{{.ID}}\")" ]; then
   echo "removing containers"
   docker-compose -f development-docker-compose.yml down
