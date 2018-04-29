@@ -1,0 +1,33 @@
+FROM python:3.6.5-stretch
+MAINTAINER Brian H. Grant <brian@hackoregon.org> & "M. Edward (Ed) Borasky <znmeb@znmeb.net>
+ENV PYTHONUNBUFFERED 1
+
+# add required Debian packages
+# https://docs.djangoproject.com/en/2.0/ref/contrib/gis/install/geolibs/
+RUN apt-get update \
+  && apt-get install -qqy --no-install-recommends \
+    binutils \
+    gdal-bin \
+    libproj-dev \
+    postgresql-client-9.6 \
+  && apt-get clean
+
+# create and populate /code
+RUN mkdir -p /code/bin
+COPY /bin/* /code/bin/
+WORKDIR /code
+
+# install the requirements
+COPY /requirements/* /code/
+RUN pip install -r development.txt
+
+# install GeoDjango
+RUN pip install -r geodjango.txt
+
+# create the project and api
+COPY gunicorn_config.py /code/
+ARG PROJECT_NAME
+RUN /bin/bash -c "django-admin.py startproject $PROJECT_NAME . ; python manage.py startapp api"
+
+# replace newly created settings with the example settings
+RUN sed "s;<EXAMPLE_PROJECT_NAME>;$PROJECT_NAME;g" bin/example-settings.py > $PROJECT_NAME/settings.py
