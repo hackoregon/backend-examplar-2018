@@ -31,9 +31,14 @@
     api_development_1  | Starting development server at http://0.0.0.0:8000/
     api_development_1  | Quit the server with CONTROL-C.
     ```
+2. Browsing to the running containers: On Linux, Docker for Mac or Docker for Windows, the IP address is `localhost`. On Docker Toolbox, which uses Docker Machine, do `docker-machine ls` to determing `<machine-name>` and then `docker-machine <machine-name> ip`.
 
-    You can now browse to <http://localhost:8000> to verify the server is live. You should see a Django default page.
-2. After verifying that the server is there, press `CTRL-C`. This will shut down the database and API services.
-3. The script will copy the generated code for your project to the repository.
-4. Check your remote - `git remote -v`. Make sure you'll be pushing to the new repository, not the template!
-5. `git add .; git commit; git push`.
+    You can browse to `http://<ip-address>:8000` to verify the server is live. You should see a Django default page.
+
+![](screenshots/2018-04-29 16_31_37-Django.png)
+
+    You can access the database from the host using `pgAdmin` or `psql`. The username is `postgres`, password is the one you set for `postgres` in `.env`, host is `<ip-address>` and the port is the one you set in `.env`, usually 5439.
+3. After verifying that the server is there, press `CTRL-C`. This will shut down the database and API services.
+4. The script will copy the generated code for your project to the repository.
+5. Check your remote - `git remote -v`. Make sure you'll be pushing to the new repository, not the template!
+6. `git add .; git commit; git push`.
