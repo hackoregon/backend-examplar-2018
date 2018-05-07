@@ -44,6 +44,7 @@ if DEBUG == True:
         'corsheaders',
         'django_filters',
         'rest_framework',
+        'rest_framework_gis',
         'rest_framework_swagger',
         ]
 
@@ -60,6 +61,7 @@ else:
         'corsheaders',
         'django_filters',
         'rest_framework',
+        'rest_framework_gis',
         'rest_framework_swagger',
         ]
 
