@@ -42,36 +42,35 @@ Once you understand the sample you can create your own api. This repo contains a
 
 1. `cp env.sample .env` in the root of the repo (this file is already in the `.gitignore`, so you should not have to worry about it getting accidentally checked into a GitHub repo)
 
-2. Edit your `.env` file and change the `DEVELOPMENT_` variables to appropriate values for your project's databasae backup - feel free to ignore the `PRODUCTION_` variables for the moment. Ensure that the values `PROJECT_NAME`, `DEVELOPMENT_POSTGRES_NAME`, and `DEVELOPMENT_DATABASE_OWNER` are set correctly. You should not need to change any of the other values. _If you unsure of what values to use for these settings or do not have a database backup file, please contact your Team's Data Manager before proceeding further._ 
+2. Edit your `.env` file and change the variables to appropriate values for your project's database backup. Ensure that the values `PROJECT_NAME`, `POSTGRES_NAME`, and `DATABASE_OWNER` are set correctly. You should not need to change any of the other values. _If you unsure of what values to use for these settings or do not have a database backup file, please contact your Team's Data Manager before proceeding further._
 
 
-```shell
-# MUST BE A DOCKER PROJECT NAME COMPLIANT NAME
-PROJECT_NAME=<What you want to name the project>
-
-# keep as true to run the Django dev server
-DEBUG=True
+```
+PROJECT_NAME=dead_songs
 
 # the database superuser name - this is the default
-DEVELOPMENT_POSTGRES_USER=postgres
+POSTGRES_USER=postgres
 
 # the database name the API will connect to - "dbname" in most PostgreSQL command-line tools
-DEVELOPMENT_POSTGRES_NAME=<your_database_name>
+POSTGRES_NAME=dead_songs
 
-# the database owner - automatic restore needs this
-DEVELOPMENT_DATABASE_OWNER=<your_database_owner>
+# the database owner - automatic restore needs this (most likely only used in dev)
+DATABASE_OWNER=sampleuser
 
 # *service* name (*not* image name) of the database in the Docker network
-DEVELOPMENT_POSTGRES_HOST=db_development
+POSTGRES_HOST=db_development
 
 # port the database is listening on in the Docker network
-DEVELOPMENT_POSTGRES_PORT=5432
+POSTGRES_PORT=5432
 
 # password for the PostgreSQL database superuser in the database container
-DEVELOPMENT_POSTGRES_PASSWORD=sit-down-c0mic
+POSTGRES_PASSWORD=sit-down-c0mic
+
+# the password for the teams
+TEAM_PASSWORD=d0wn!0ff!a!duck
 
 # Django secret key in the API container
-DEVELOPMENT_DJANGO_SECRET_KEY=r0ck.ar0und.the.c10ck
+DJANGO_SECRET_KEY=r0ck.ar0und.the.c10ck
 ```
 
 3. Copy your database backup file into the backup folder. Database container is a PostGIS-enabled 9.6 container. Backup can be a .backup, .sql, or .sql.gz format.
