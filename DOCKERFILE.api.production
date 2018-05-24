@@ -11,9 +11,6 @@ RUN apt-get update \
     libproj-dev \
   && apt-get clean
 
-# install awscli for get-ssm-parameters.sh script
-pip install --upgrade awscli
-
 # create and populate /code
 RUN mkdir /code
 WORKDIR /code
