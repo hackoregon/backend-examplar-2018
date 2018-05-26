@@ -23,6 +23,9 @@ POSTGRES_USER=`aws ssm get-parameters --names "/production/2018/API/$PROJECT_NAM
 DJANGO_SECRET_KEY=`aws ssm get-parameters --names "/production/2018/API/$PROJECT_NAME/DJANGO_SECRET_KEY" --with-decryption --region $EC2_REGION --output text 2>&1`
 POSTGRES_PASSWORD=`aws ssm get-parameters --names "/production/2018/API/$PROJECT_NAME/POSTGRES_PASSWORD" --with-decryption --region $EC2_REGION --output text 2>&1`
 
+# Verify the values are coming through
+echo "database name is " $POSTGRES_NAME
+
 # Set environment variables in the container
 export DJANGO_SECRET_KEY=$DJANGO_SECRET_KEY
 export POSTGRES_HOST=$POSTGRES_HOST
