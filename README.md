@@ -4,6 +4,11 @@ This is a simple example repo to quickstart a [DRF](http://www.django-rest-frame
 
 Allows for multiple environments to run API, through series of docker-compose files. You should be able to replace the Django Code, making a few updates and get this running with a new API or existing one.
 
+## TL;DR Does this work?
+This exemplar is the basis for the APIs that are currently successfully deployed here:
+1. Transportation Systems ([API](http://service.civicpdx.org/transportation-systems/), [source repo](https://github.com/hackoregon/transportation-systems-backend-2018))
+2. Disaster Resilience ([API](http://service.civicpdx.org/disaster-resilience/), [source repo](https://github.com/hackoregon/disaster-resilience-backend))
+
 ## Main Parts of Repo
 
 DOCKER related:
