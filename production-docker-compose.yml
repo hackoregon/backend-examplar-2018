@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: DOCKERFILE.api.production
-    image: api_production
+    image: $DOCKER_IMAGE
     command: ./bin/production-docker-entrypoint.sh
     volumes:
       - .:/code
@@ -13,9 +13,9 @@ services:
     environment:
       - PROJECT_NAME
       - DEBUG=False
-      - POSTGRES_USER=${PRODUCTION_POSTGRES_USER}
-      - POSTGRES_NAME=${PRODUCTION_POSTGRES_NAME}
-      - POSTGRES_HOST=${PRODUCTION_POSTGRES_HOST}
-      - POSTGRES_PORT=${PRODUCTION_POSTGRES_PORT}
-      - POSTGRES_PASSWORD=${PRODUCTION_POSTGRES_PASSWORD}
-      - DJANGO_SECRET_KEY=${PRODUCTION_DJANGO_SECRET_KEY}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_NAME=${POSTGRES_NAME}
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
