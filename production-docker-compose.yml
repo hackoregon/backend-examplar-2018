@@ -1,6 +1,6 @@
 version: '3.4'
 services:
-  api_production:
+  backend-exemplar-service:
     build:
       context: .
       dockerfile: DOCKERFILE.api.production

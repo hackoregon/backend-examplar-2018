@@ -21,6 +21,21 @@
 bind = ':8000'
 backlog = 2048
 
+
+#
+# Server Mechanics
+#
+#   preload_app
+#
+#       Load application code before the worker processes are forked.
+#
+#       By preloading an application you can save some RAM resources as well as
+#       speed up server boot times. Although, if you defer application loading 
+#       to each worker process, you can reload your application code easily by 
+#       restarting workers.
+
+preload_app = False
+
 #
 # Worker processes
 #
@@ -70,20 +85,18 @@ try:
     from gevent import monkey
     from psycogreen.gevent import patch_psycopg
 
+    # this ensures forked processes are patched with gevent/gevent-psycopg2
+    def post_fork(server, worker):
+        monkey.patch_all()
+        patch_psycopg()
+
+        worker.log.info("Psycogreen patched psycopg2 with green gevents in worker fork.")
 
     # setting this inside the 'try' ensures that we only
     # activate the gevent worker pool if we have gevent installed
     worker_class = 'gevent'
     workers = 4
-    # this ensures forked processes are patched with gevent/gevent-psycopg2
-    def do_post_fork(server, worker):
-        monkey.patch_all()
-        patch_psycopg()
 
-        # you should see this text in your gunicorn logs if it was successful
-        worker.log.info("Made Psycopg2 Green")
-
-    post_fork = do_post_fork
 except ImportError:
     pass
 
