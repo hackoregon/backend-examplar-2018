@@ -9,4 +9,5 @@ set -e
 echo "Collect static files"
 python -Wall manage.py collectstatic --noinput
 
-python -Wall manage.py test --nomigrations --noinput --keepdb #--parallel
+# have pytest run unit tests
+pytest
