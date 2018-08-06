@@ -75,7 +75,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-ROOT_URLCONF = 'neighborhoods_backend.urls'
+ROOT_URLCONF = 'dead_songs.urls'
 
 TEMPLATES = [
     {
