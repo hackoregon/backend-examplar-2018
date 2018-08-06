@@ -1,18 +1,62 @@
-from django.conf.urls import url, include
-from rest_framework.routers import DefaultRouter
-from api import views
-from rest_framework.schemas import get_schema_view
-from rest_framework_swagger.views import get_swagger_view
+from django.urls import path
+from rest_framework.urlpatterns import format_suffix_patterns
 
-
-router = DefaultRouter()
-router.register(r'songs', views.SongViewSet)
-
-
-#schema view
-schema_view = get_swagger_view(title='Dead Songs')
+from . import views
 
 urlpatterns = [
-    url(r'^schema/', schema_view),
-    url(r'^api/', include(router.urls)),
+    # path('rlis_neighborhoods', views.RlisNeighborhoodsList.as_view()),
+    # path('rlis_taxlot_2017', views.RlisTaxlot2017List.as_view()),
+    # path('rlis_taxlot_pts_2015', views.RlisTaxlotPts2015List.as_view()),
+    path('active_multiuse_trail', views.ActiveMultiuseTrailList.as_view()),
+    path('affordable_housing', views.AffordableHousingList.as_view()),
+    path('bike_count_locations', views.BikeCountLocationsList.as_view()),
+    path('bike_counts', views.BikeCountsList.as_view()),
+    path('bike_daily_estimates', views.BikeDailyEstimatesList.as_view()),
+    path('bike_greenways', views.BikeGreenwaysList.as_view()),
+    path('bike_lanes', views.BikeLanesList.as_view()),
+    path('bike_parking', views.BikeParkingList.as_view()),
+    path('bus_stops', views.BusStopsList.as_view()),
+    path('camp_reports', views.CampReportList.as_view()),
+    path('camp_sweeps', views.CampSweepsList.as_view()),
+    path('camp_sweeps/bytime', views.camp_sweeps_by_time),
+    path('camp_sweeps/by_neighborhood', views.camp_sweeps_by_neighborhood),
+    path('camp_weekly_aggregates', views.CampsiteWeeklyAggregatesList.as_view()),
+    path('community_gardens', views.CommunityGardensList.as_view()),
+    path('crimes', views.CrimesList.as_view()),
+    path('demolitions', views.DemolitionsList.as_view()),
+    path('housing_areas', views.HousingAreasList.as_view()),
+    path('metro_limit', views.MetroLimitList.as_view()),
+    path('neighborhood_ages', views.NeighborhoodVoterRegistrationByAgeGroupList.as_view()),
+    path('neighborhood_ages/neighborhood_names', views.neighborhood_names),
+    path('neighborhood_ages_geom', views.NeighborhoodVoterRegistrationByAgeGroupGeomList.as_view()),
+    path('park_ride_lots', views.ParkRideLotsList.as_view()),
+    path('parks_trails', views.ParksTrailsList.as_view()),
+    path('parks', views.ParksList.as_view()),
+    path('percent_shared_housing', views.PercentSharedHousingList.as_view()),
+    path('rail_stops', views.RailStopsList.as_view()),
+    path('retail_locations', views.RetailLocationsList.as_view()),
+    path('school_class_size', views.SchoolClassSizeList.as_view()),
+    path('school_districts', views.SchoolDistrictsList.as_view()),
+    path('school_demographics', views.SchoolDemographicsList.as_view()),
+    path('school_demographics/reduced_lunches', views.SchoolDemographicsReducedLunchesList.as_view()),
+    path('school_demographics_racial_counts', views.SchoolDemographicsCountList.as_view()),
+    path('school_demographics/names', views.school_names),
+    path('school_demographics/yearly_totals', views.SchoolDemographicsTotalsList.as_view()),
+    path('school_enrollment', views.ODEEnrollmentList.as_view()),
+    path('school_staffing_changes', views.SchoolStaffingChangesList.as_view()),
+    path('school_reduced_lunches', views.ODEFRLunchList.as_view()),
+    path('teacher_experience', views.TeacherExperienceList.as_view()),
+    path('teacher_experience_subtotals', views.TeacherExperienceSubtotalsList.as_view()),
+    path('transit_centers', views.TransitCentersList.as_view()),
+    path('trees', views.TreesList.as_view()),
+    path('voter_precincts', views.VoterPrecinctsList.as_view()),
+    path('voter_registration_age', views.VoterRegistrationByAgeList.as_view()),
+    path('voter_movement', views.VoterMovementByAgeList.as_view()),
+    path('voter_movement_points', views.VoterMovementByAgePointList.as_view()),
+    path('voter_movement_averages', views.VoterMovementAverageByAgeList.as_view()),
+    path('voter_movement_counts', views.VoterMovementCountByAgeList.as_view()),
+    path('zip_codes', views.ZipCodesList.as_view()),
+    path('zoning', views.ZoningList.as_view()),
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)

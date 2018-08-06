@@ -7,7 +7,7 @@
 
 EC2_REGION="us-west-2" # unfortunately cannot rely on dynamic env var values that this script is meant to pull in
 NAMESPACE="/production/2018/API" # future-proofing this script for subsequent or past containers
-PROJECT_CANONICAL_NAME="backend-exemplar" # must be set to each project's "Final naming convention" from here https://github.com/hackoregon/civic-devops/issues/1
+PROJECT_CANONICAL_NAME="neighborhood-development" # must be set to each project's "Final naming convention" from here https://github.com/hackoregon/civic-devops/issues/1
 
 # Get unencrypted values
 POSTGRES_HOST=`aws ssm get-parameters --names "$NAMESPACE"/"$PROJECT_CANONICAL_NAME"/POSTGRES_HOST --no-with-decryption --region $EC2_REGION --output text | awk '{print $4}'`

@@ -33,7 +33,6 @@ ALLOWED_HOSTS = ['*']
 if DEBUG == True:
 
     INSTALLED_APPS = [
-        'test_without_migrations',
         'django.contrib.admin',
         'django.contrib.auth',
         'django.contrib.contenttypes',
@@ -44,12 +43,12 @@ if DEBUG == True:
         'corsheaders',
         'django_filters',
         'rest_framework',
+        'rest_framework_gis',
         'rest_framework_swagger',
         ]
 
 else:
     INSTALLED_APPS = [
-        'test_without_migrations',
         'django.contrib.admin',
         'django.contrib.auth',
         'django.contrib.contenttypes',
@@ -60,6 +59,7 @@ else:
         'corsheaders',
         'django_filters',
         'rest_framework',
+        'rest_framework_gis',
         'rest_framework_swagger',
         ]
 
@@ -75,7 +75,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-ROOT_URLCONF = 'dead_songs.urls'
+ROOT_URLCONF = 'neighborhoods_backend.urls'
 
 TEMPLATES = [
     {
@@ -101,7 +101,7 @@ WSGI_APPLICATION = 'dead_songs.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
         'NAME': os.environ.get('POSTGRES_NAME'),
         'USER': os.environ.get('POSTGRES_USER'),
@@ -109,23 +109,23 @@ DATABASES = {
         'PORT': os.environ.get('POSTGRES_PORT')
     }
 }
+# 2018-06-20: commenting out this block in pursuit of https://github.com/hackoregon/civic-devops/issues/177
+# if DEBUG == False:
 
-if DEBUG == False:
-
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django_db_geventpool.backends.postgresql_psycopg2',
-            'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-            'NAME': os.environ.get('POSTGRES_NAME'),
-            'USER': os.environ.get('POSTGRES_USER'),
-            'HOST': os.environ.get('POSTGRES_HOST'),
-            'PORT': os.environ.get('POSTGRES_PORT'),
-            'CONN_MAX_AGE': 0,
-            'OPTIONS': {
-                'MAX_CONNS': 20
-            }
-        }
-    }
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django_db_geventpool.backends.postgis',
+#             'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+#             'NAME': os.environ.get('POSTGRES_NAME'),
+#             'USER': os.environ.get('POSTGRES_USER'),
+#             'HOST': os.environ.get('POSTGRES_HOST'),
+#             'PORT': os.environ.get('POSTGRES_PORT'),
+#             'CONN_MAX_AGE': 0,
+#             'OPTIONS': {
+#                 'MAX_CONNS': 1
+#             }
+#         }
+#     }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -167,7 +167,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATIC_URL = '/static/'
+STATIC_URL = '/neighborhood-development/static/'
 
 #custom test runner to toggle between Managed=True and Managed=False for models handling test db
 #TEST_RUNNER = 'api.utils.UnManagedModelTestRunner'

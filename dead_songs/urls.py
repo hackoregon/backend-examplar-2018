@@ -1,4 +1,6 @@
-"""dead_songs URL Configuration
+from rest_framework_swagger.views import get_swagger_view
+
+"""neighborhoods_backend URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.0/topics/http/urls/
@@ -14,10 +16,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.conf.urls import url, include
-from django.urls import path
+from django.urls import path, include
+
+schema_view = get_swagger_view(title='Hack Oregon 2018 Neighborhood Development APIs')
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    url(r'^', include('api.urls')),
+    path('neighborhood-development/', schema_view),
+    path('neighborhood-development/api/', include('api.urls')),
+    path('neighborhood-development/census/', include('census.urls')),
+    path('neighborhood-development/sandbox/', include('civic_sandbox.urls')),
+
 ]
