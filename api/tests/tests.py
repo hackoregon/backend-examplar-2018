@@ -9,7 +9,7 @@ class RootEndpointTestCase(TestCase):
     def setUp(self):
         self.client = APIClient()
     def test_list_response(self):
-        response = self.client.get('/disaster-resilience/')
+        response = self.client.get('/')
         assert response.status_code == status.HTTP_200_OK
 
 class APIRootEndpointTestCase(TestCase):
