@@ -1,5 +1,4 @@
 from django.test import TestCase, SimpleTestCase, TransactionTestCase
-from api.models import preexisting_models
 from rest_framework.test import APIClient
 from rest_framework import status
 
