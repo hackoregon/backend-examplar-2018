@@ -16,8 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import url, include
 from django.urls import path
+from rest_framework.documentation import include_docs_urls
+
+swagger_docs_title = 'Backend Exemplar API'
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # disable admin interface
+    #path('admin/', admin.site.urls),
+    path('docs/', include_docs_urls(title=swagger_docs_title)),
     url(r'^', include('api.urls')),
 ]
