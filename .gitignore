@@ -104,3 +104,5 @@ ENV/
 
 **/.DS_Store
 backend-exemplar-2018.code-workspace
+
+.pytest_cache/
