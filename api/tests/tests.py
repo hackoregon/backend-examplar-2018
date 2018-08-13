@@ -5,18 +5,25 @@ from rest_framework import status
 # Django, Writing and Running Unit Tests: https://docs.djangoproject.com/en/2.0/topics/testing/overview/
 # Django, Automated Unit Testing Tutorial: https://docs.djangoproject.com/en/2.0/intro/tutorial05/
 
-class RootEndpointTestCase(TestCase):
-    def setUp(self):
-        self.client = APIClient()
-    def test_list_response(self):
-        response = self.client.get('/')
-        assert response.status_code == status.HTTP_200_OK
+# class RootEndpointTestCase(TestCase):
+#     def setUp(self):
+#         self.client = APIClient()
+#     def test_list_response(self):
+#         response = self.client.get('/')
+#         assert response.status_code == status.HTTP_200_OK
 
 class APIRootEndpointTestCase(TestCase):
     def setUp(self):
         self.client = APIClient()
     def test_response(self):
         response = self.client.get('/api/')
+        assert response.status_code == status.HTTP_200_OK
+
+class SchemaRootEndpointTestCase(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+    def test_response(self):
+        response = self.client.get('/schema/')
         assert response.status_code == status.HTTP_200_OK
 
 class DocsEndpointTestCase(TestCase):

@@ -15,6 +15,9 @@ RUN apt-get update \
 RUN mkdir /code
 WORKDIR /code
 
+# upgrade pip
+RUN pip install --upgrade pip
+
 COPY /requirements/* /code/
 RUN pip install -r production.txt
 
