@@ -3,7 +3,7 @@ LABEL maintainer="M. Edward (Ed) Borasky <znmeb@znmeb.net>"
 
 # Install apt packages
 RUN apt-get update \
-  && apt-get install -qqy --no-install-recommends \
+  && apt-get install -qy --no-install-recommends \
     postgis \
     postgresql-9.6-postgis-2.4 \
     postgresql-9.6-postgis-2.4-scripts \
