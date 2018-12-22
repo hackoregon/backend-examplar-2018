@@ -4,11 +4,12 @@ LABEL maintainer="M. Edward (Ed) Borasky <znmeb@znmeb.net>"
 # Install apt packages
 RUN apt-get update \
   && apt-get install -qy --no-install-recommends \
+    apt-utils \
+  && apt-get install -qy --no-install-recommends \
     postgis \
     postgresql-9.6-postgis-2.4 \
     postgresql-9.6-postgis-2.4-scripts \
-    postgresql-9.6-postgis-scripts \
-    postgresql-9.6-pgrouting \
+    postgresql-9.6-pgrouting \    
   && apt-get clean
 
 # set up automatic restores
