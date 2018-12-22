@@ -6,7 +6,9 @@ export PATH=$PATH:~/.local/bin
 set -e
 
 # Collect static files
-echo "Collect static files"
 python -Wall manage.py collectstatic --noinput
+
+# apply any migrations
+python -Wall manage.py migrate --noinput
 
 pytest -n 4
